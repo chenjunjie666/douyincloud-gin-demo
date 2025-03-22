@@ -36,7 +36,7 @@ func HandleCallback(ctx *gin.Context) {
 
 	// 处理授权码
 	if code != "" {
-		fmt.Fprintf(ctx.Writer, "成功获取授权码: %s", code)
+		//fmt.Fprintf(ctx.Writer, "成功获取授权码: %s", code)
 		log.Printf("成功获取授权码: %s", code)
 		// 这里可以添加后续逻辑，例如使用授权码换取 access_token
 	} else {
