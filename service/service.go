@@ -43,6 +43,8 @@ func HandleCallback(ctx *gin.Context) {
 		http.Error(ctx.Writer, "未找到授权码", http.StatusBadRequest)
 		log.Println("未找到授权码")
 	}
+
+	Success(ctx, code)
 }
 
 func Hello(ctx *gin.Context) {
@@ -118,4 +120,8 @@ type Resp struct {
 	ErrNo  int         `json:"err_no"`
 	ErrMsg string      `json:"err_msg"`
 	Data   interface{} `json:"data"`
+}
+
+type DyLoginIngo struct {
+	Code string `json:"code"`
 }
