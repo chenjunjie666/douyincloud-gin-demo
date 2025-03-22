@@ -19,7 +19,31 @@ import (
 	"douyincloud-gin-demo/component"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
+	"net/http"
 )
+
+// handleCallback 处理抖音回调请求
+func HandleCallback(ctx *gin.Context) {
+	// 检查请求方法是否为 GET
+	if ctx.Request.Method != http.MethodGet {
+		http.Error(ctx.Writer, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// 获取授权码和错误信息
+	code := ctx.Query("code")
+
+	// 处理授权码
+	if code != "" {
+		fmt.Fprintf(ctx.Writer, "成功获取授权码: %s", code)
+		log.Printf("成功获取授权码: %s", code)
+		// 这里可以添加后续逻辑，例如使用授权码换取 access_token
+	} else {
+		http.Error(ctx.Writer, "未找到授权码", http.StatusBadRequest)
+		log.Println("未找到授权码")
+	}
+}
 
 func Hello(ctx *gin.Context) {
 	target := ctx.Query("target")

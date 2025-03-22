@@ -46,8 +46,8 @@ func GetComponent(component string) (HelloWorldComponent, error) {
 }
 
 func InitComponents() {
-	mongoHelloWorld = NewMongoComponent()
-	redisHelloWorld = NewRedisComponent()
+	//mongoHelloWorld = NewMongoComponent()
+	//redisHelloWorld = NewRedisComponent()
 	ctx := context.TODO()
 	err := mongoHelloWorld.SetName(ctx, "name", "mongodb")
 	if err != nil {
